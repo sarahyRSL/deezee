@@ -1,0 +1,97 @@
+{% extends "layout.html" %} {% block body %}
+<p>
+  Click on a cell in a table to copy the text into your clipboard. 
+  In the <em>Ships To</em> column of the <em>Vendors</em> table, click on a specific address to copy that address.
+</p>
+<!-- EMPLOYEE -->
+<h2>Employees</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>E-Mail</th>
+      <th>Phone</th>
+      <!-- <th>is Locked</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    {% for employee in context.employees %}
+    <tr>
+      <td onclick="copyText(event)">{{employee.name}}</td>
+      <td onclick="copyText(event)"><a href="mailto:{{employee.email}}" >{{employee.email}}</a></td>
+      <td onclick="copyText(event)"><a href="tel:{{employee.phone}}" >{{employee.phone}}</a></td>
+      <!-- <td>{{employee.is_locked}}</td> -->
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!-- VENDOR -->
+<h2>Vendors</h2>
+<table>
+  <thead>
+    <tr>
+      <th class="small">Name</th>
+      <th class="small">Company</th>
+      <th class="small">E-Mail</th>
+      <th class="small">Phone</th>
+      <th>Address</th>
+      <th class="tiny">Add. Line Two</th>
+      <th class="small">City</th>
+      <th class="small">State/ Province</th>
+      <th class="tiny">Zip/ Postal</th>
+      <th class="tiny">Country</th>
+      <th>Ships to</th>
+      <!-- <th>is Locked</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    {% for vendor in context.vendors %}
+    <tr>
+      <td class="small" onclick="copyText(event)">{{vendor.name}}</td>
+      <td class="small" onclick="copyText(event)">{{vendor.company}}</td>
+      <td class="small" onclick="copyText(event)"><a href="mailto:{{vendor.email}}" >{{vendor.email}}</a></td>
+      <td class="small" onclick="copyText(event)"><a href="tel:{{vendor.phone}}" >{{vendor.phone}}</a></td>
+      <td onclick="copyText(event)">{{vendor.address}}</td>
+      <td class="tiny" onclick="copyText(event)">{{vendor.address2}}</td>
+      <td class="small" onclick="copyText(event)">{{vendor.city}}</td>
+      <td class="small" onclick="copyText(event)">{{vendor.state}}</td>
+      <td class="tiny" onclick="copyText(event)">{{vendor.zip}}</td>
+      <td class="tiny" onclick="copyText(event)">{{vendor.country}}</td>
+      <td onclick="copyText(event)">
+        {% for location in vendor.ship_to %}
+          <p>{{location}}</p>        
+          {% if not loop.last %}
+            <hr>
+          {% endif %}
+        {% endfor %}
+      </td>
+      <!-- <td>{{vendor.is_locked}}</td> -->
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!-- LOCATIONS -->
+<h2>Locations</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for location in context.locations %}
+    <tr>
+      <td onclick="copyText(event)">{{location.label}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script>
+  function copyText(event) {
+    var copyText = event.target;
+    console.log(event.target)
+    var text = copyText.innerText
+    navigator.clipboard.writeText(text);
+}
+</script>
+{% endblock %}

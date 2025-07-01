@@ -1,0 +1,29 @@
+{% extends "layout.html" %} {% block body %}
+<h1>Vendor Registration</h1>
+<form action="/vendor-registration-two/{{context.vendor_id}}" method="post" style="width: 40%">
+  <h2>DeeZee Ship To Locations</h2>
+  <ul class="location-list">
+    {% for location in context.locations %}
+    <li>
+      <label for="location-{{location.id}}">
+        <input
+          class="checkbox"
+          type="checkbox"
+          id="location-{{location.id}}"
+          name="{{location.id}}"
+          value="{{location.id}}"
+        />
+        {{location.label}}
+      </label>
+    </li>
+    {% endfor %}
+  </ul>
+  <button class="btn-secondary" type="button" onClick="prevpage()">Back</button>
+  <button class="btn-primary" type="submit">Submit</button>
+</form>
+<script>
+  function prevpage() {
+    window.location.href = "/vendor-registration";
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %} {% block body %}
+<h1>Employee Registration</h1>
+<form id="employee-form" action="/employee-registration" method="post">
+  <label for="name"
+    >Name<span class="required">*</span><br />
+    <input type="text" id="name" name="name" required value="{{context.name}}"/>
+  </label>
+
+  <label for="email"
+    >Email<span class="required">*</span><br />
+    <input type="email" id="email" name="email" required value="{{context.email}}" />
+  </label>
+
+  <label for="phone"
+    >Phone<span class="required">*</span><br />
+    <input type="tel" id="phone" name="phone" required value="{{context.phone}}"/>
+  </label>
+
+  <button class="btn-primary" type="submit">Submit</button>
+</form>
+{% endblock %}

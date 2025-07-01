@@ -1,0 +1,112 @@
+{% extends "layout.html" %} {% block body %}
+<h1>Vendor Registration</h1>
+<form action="/vendor-registration" method="post">
+  <span class="multi-item-row">
+    <label for="name"
+      >Name<span class="required">*</span><br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        value="{{context.name}}"
+      />
+    </label>
+
+    <label for="company"
+      >Company<span class="required">*</span><br />
+      <input
+        type="text"
+        id="company"
+        name="company"
+        required
+        value="{{context.company}}"
+      />
+    </label>
+  </span>
+
+  <span class="multi-item-row">
+    <label for="email"
+      >Email<span class="required">*</span><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        value="{{context.email}}"
+      />
+    </label>
+
+    <label for="phone"
+      >Phone<span class="required">*</span><br />
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        required
+        value="{{context.phone}}"
+      />
+    </label>
+  </span>
+
+  <label for="address"
+    >Address<span class="required">*</span><br />
+    <input
+      type="text"
+      id="address"
+      name="address"
+      required
+      value="{{context.address}}"
+    />
+  </label>
+
+  <label for="address2"
+    >Address 2<br />
+    <input
+      type="text"
+      id="address2"
+      name="address2"
+      value="{{context.address2}}"
+    />
+  </label>
+
+  <span class="multi-item-row">
+    <label for="city"
+      >City/Town<span class="required">*</span><br />
+      <input
+        type="text"
+        id="city"
+        name="city"
+        required
+        value="{{context.city}}"
+      />
+    </label>
+
+    <label for="state"
+      >State/Province<span class="required">*</span><br />
+      <input
+        type="text"
+        id="state"
+        name="state"
+        required
+        value="{{context.state}}"
+      />
+    </label>
+
+    <label for="zip"
+      >Zip/Postal Code<span class="required">*</span><br />
+      <input type="text" id="zip" name="zip" required value="{{context.zip}}" />
+    </label>
+  </span>
+
+  <label for="countryDropdown"
+    >Country<span class="required">*</span><br />
+    <select id="countryDropdown" name="country" required>
+      <option value="United States" selected="selected">United States</option>
+      <option value="CA">Canada</option>
+      <option value="MX">Mexico</option>
+    </select>
+  </label>
+  <button class="btn-primary" type="submit">Next</button>
+</form>
+{% endblock %}

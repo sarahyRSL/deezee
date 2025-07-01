@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h1>Less-Than-Truckload ("LTL") Shipments</h1>
+    <h2>Shipping Options</h2>
+    <div class="btn-group">
+        <button class="btn-primary" onclick="location.href='https://rocksolid.3gtms.com/web/login?lk=RSL'"><i class="bi bi-box-arrow-in-left"></i><br>Log In</button>
+        <a class="btn-primary" href="mailto:deezee@rocksolidlogistics.com"><i class="bi bi-envelope-fill"></i><br>Email</button>
+        <a class="btn-primary" href="tel:+18105884014"><i class="bi bi-telephone-fill"></i><br>Call</a>
+    </div>
+    <h2>First Time User? Click Below To Register</h2>
+    <div class="btn-group">
+        <a class="btn-secondary" href="/vendor-registration">Vendor</a>
+        <a class="btn-secondary" href="/employee-registration">Employee</a>
+    </div>
+{% endblock %}
