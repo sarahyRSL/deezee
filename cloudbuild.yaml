@@ -1,0 +1,23 @@
+ steps:
+    - name: 'python'
+      entrypoint: 'python'
+      args: ['-m', 'pip', 'install', '--upgrade', 'pip']
+    - name: python
+      entrypoint: pip
+      args: ["install", "-r", "requirements.txt", "--user"] 
+    - name: 'python'
+      entrypoint: 'python'
+      args: ['-m', 'flask', 'run', '--upgrade']
+    # Docker Build
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['build', '-t', 
+            'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}', '.']
+    # Docker push to Google Artifact Registry
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['push',  'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}']
+    # Deploy to Cloud Run
+    - name: google/cloud-sdk
+      args: ['gcloud', 'run', 'deploy', 'helloworld-${SHORT_SHA}', 
+            '--image=us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}', 
+            '--region', 'us-central1', '--platform', 'managed', 
+            '--allow-unauthenticated']
