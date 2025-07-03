@@ -25,7 +25,7 @@ local running with debugger: `flask --app deeezeefreight run --debug` run from d
 - auth --> specifically for the login to access the tables
 - db --> creates the database connections and initializes the cursor by selecting the table before any command is run
 - functions --> has the big ol' functions that are either used more than once or messy and I didn't want to interrupt the logic of the routes file
-- app --> has all the routing for the application and handles all of the submissions
+- routes --> has all the routing for the application and handles all of the submissions
 - static folder --> everything that doesnt change on the site. styling, dropdown object, assets folder
 - assets folder --> all images used including the favicon
 - countryDropdown --> js specifically for the form dropdown country selector because the code was long
@@ -39,6 +39,7 @@ local running with debugger: `flask --app deeezeefreight run --debug` run from d
 - unauthorized --> tell the user they are not authorized to log in and route them back to landing page
 - vendorRegistration --> page one of vendor registration form
 - vendorRegistrationTwo --> page two of vendor registration. Contains the "ship to" locations. could hypothetically be merged into the first page but it risks very long and hard-to-read code. plus two pages follows the format of the previous site
+- app.py --> runs the flask app
 - _init_s --> tell python that the folder is a module. init in root is what scaffolds the site
 - .env (not in repo) --> all environment variables required to run the site. can only get this from a fellow dev
 - .gitignore --> tells git not to put auto-generated files in the repo
