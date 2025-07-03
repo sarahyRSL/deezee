@@ -5,3 +5,7 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ app.py/$1 [QSA,L]
 </IfModule>
+
+PassengerEnabled on 
+PassengerAppRoot / 
+PassengerPython /deezee/venv/bin/python
