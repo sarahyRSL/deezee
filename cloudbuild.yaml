@@ -1,11 +1,14 @@
 steps:
+    - name: 'source'
+      entrypoint: 'source'
+      args: ['venv/bin/activate']
     - name: 'python'
       entrypoint: 'python'
       args: ['-m', 'pip', 'install', '--upgrade', 'pip']
     - name: python
       entrypoint: pip
       args: ["install", "-r", "requirements.txt", "--user"] 
-    - name: 'python'
+    - name: 'gunicorn'
       entrypoint: 'gunicorn'
       args: ['deezee:app', '--daemon']
     # Docker Build
