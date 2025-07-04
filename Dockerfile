@@ -16,4 +16,4 @@ ENV PORT=8080
 EXPOSE 8080
 
 # Run the application
-CMD ["gunicorn", "-b", ":8080", "deezee:app"]
+CMD ["gunicorn", "-b", ":8080", "wsgi:app"]
