@@ -1,6 +1,6 @@
 steps:
-    - name: 'python'
-      entrypoint: 'source'
+    - name: 'source'
+      entrypoint: 'python'
       args: ['venv/bin/activate']
     - name: 'python'
       entrypoint: 'python'
@@ -8,8 +8,8 @@ steps:
     - name: python
       entrypoint: pip
       args: ["install", "-r", "requirements.txt", "--user"] 
-    - name: 'python'
-      entrypoint: 'gunicorn'
+    - name: 'gunicorn'
+      entrypoint: 'python'
       args: ['deezee:app', '--daemon']
     # Docker Build
     - name: 'gcr.io/cloud-builders/docker'
