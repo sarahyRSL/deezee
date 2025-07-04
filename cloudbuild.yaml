@@ -7,7 +7,7 @@ steps:
       args: ["install", "-r", "requirements.txt", "--user"] 
     - name: 'python'
       entrypoint: 'python'
-      args: ['-m', 'flask', 'run']
+      args: ['-m', 'gunicorn', 'deezee:app', '--daemon']
     # Docker Build
     - name: 'gcr.io/cloud-builders/docker'
       args: ['build', '-t', 
